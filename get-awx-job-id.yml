@@ -2,9 +2,12 @@
   - name: Misc tests with Ansible vars
     hosts: localhost
     gather_facts: no
-    vars:
-      this_awx_job_id: "{{ tower_job_id }}"
     tasks:
       - name: List AWS Job ID
         debug:
           msg: The AWX JOB run ID is {{ tower_job_id }} #{{ lookup('env', "JOB_ID" }}
+
+    - name: Set some data to pass down to the 2nd AWX Job template
+      set_stats:
+        data:
+          this_awx_job_id: "{{ tower_job_id }}-blah"
