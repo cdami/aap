@@ -6,3 +6,5 @@
       - name: List AWS Job ID
         debug:
           msg: The AWX JOB run ID is {{ tower_job_id }} #{{ lookup('env', "JOB_ID" }}
+    vars:
+      this_awx_job_id: {{ tower_job_id }}
