@@ -1,6 +1,7 @@
 ---
   - name: Misc tests with Ansible vars
     hosts: localhost
+    gather_facts: no
     tasks:
       - name: List AWS Job ID
         debug:
