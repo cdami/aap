@@ -3,7 +3,7 @@
     hosts: localhost
     gather_facts: no
     vars:
-      this_awx_job_id: {{ tower_job_id }}
+      this_awx_job_id: "{{ tower_job_id }}"
     tasks:
       - name: List AWS Job ID
         debug:
