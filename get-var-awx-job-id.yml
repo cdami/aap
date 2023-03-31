@@ -1,0 +1,8 @@
+---
+  - name: Misc tests with Ansible vars
+    hosts: localhost
+    gather_facts: no
+    tasks:
+      - name: List var for AWS Job ID
+        debug:
+          msg: The var for AWX JOB run ID is {{ this_awx_job_id }} #{{ lookup('env', "JOB_ID" }}
