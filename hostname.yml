@@ -1,0 +1,12 @@
+---
+- name: Run playbook on hosts selected by variable
+  hosts: "{{ host_to_run_on }}"
+  tasks:
+    - name: Getting hostname from the managed host {{ host_to_run_on }}
+      shell: |
+        hostname
+      register: hostname_out
+
+    -name: Display hostname output
+      debug:
+        msg: The registered hostname is {{ hostname_out.stdout }}
