@@ -6,7 +6,8 @@
       shell: |
         hostname
       register: hostname_out
+      changed_when: false
 
-    -name: Display hostname output
+    - name: Display hostname output
       debug:
         msg: The registered hostname is {{ hostname_out.stdout }}
