@@ -1,0 +1,17 @@
+---
+- name: Testing sleep
+  hosts: hub
+  tasks:
+    - name: Before sleep
+      debug:
+        msg: "This is before sleep echo"
+    - name: Sleep
+      shell: |
+        echo "This is 5 seconds sleep task"
+        exit 1
+        sleep 15
+        echo "Finished sleeping."
+    - name: After sleep echo
+      debug:
+        msg: After sleep
+
