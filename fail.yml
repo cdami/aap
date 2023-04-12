@@ -1,0 +1,21 @@
+---
+- name: Simple example of failure with checking condition
+  hosts: tower2
+  vars:
+    instance_name: iBARb
+  tasks:
+    - name: Finding instances on host
+      debug:
+        msg: "{{ ansible_local['ora-schemas']['schemas'] }}"
+
+    - name: Fail test
+      ansible.builtin.fail:
+        msg: The playbook cannot continue; cannot find schema {{ instance_name }}
+      when: instance_name not in ansible_local['ora-schemas']['schemas']
+        #when: instance_name != ansible_local['ora-schemas']['schemas']
+        #"{{ ansible_local['ora-schemas']['schemas'] }}" != "{{ instance_name }}"
+
+    - name: Continue if OK
+      debug:
+        msg: And I continue the execution
+
